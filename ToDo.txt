@@ -1,0 +1,3 @@
+Add tag filtering 
+Add user accounts 
+Get a hard drive and stop using tmp/ 
