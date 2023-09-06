@@ -10,12 +10,20 @@
 
 <body>
     <?php
+    session_start();
+    include("header.php");
     ini_set('display_errors', '1');
     ini_set('display_startup_errors', '1');
     error_reporting(E_ALL);
     include("browse.php");
     #if logged in
-    include("upload.php"); # will be "hello user"
+    echo "<br>";
+    if (isset($_SESSION['username']))
+        include("upload.php");
+    else
+        echo "Do you want to publish pictures? <a href='register.php'>Create an account</a>
+        or
+        <a href='login.php'>log in</a>";
     #else
     #"log in?"/"register"?
     #include("login.html");

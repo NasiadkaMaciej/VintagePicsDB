@@ -1,3 +1,10 @@
 Add tag filtering 
 Add user accounts 
 Get a hard drive and stop using tmp/ 
+Check code 10 times 
+Sanitize 
+Make GUI 
+Add emails to accounts 
+Remove user from form 
+Create admin panel 
+Add tag translation 
