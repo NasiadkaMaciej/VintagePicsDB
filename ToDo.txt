@@ -8,3 +8,5 @@ Add emails to accounts
 Remove user from form 
 Create admin panel 
 Add tag translation 
+Add Forgot password 
+Filter by multiple tags simultaneously 

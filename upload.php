@@ -41,7 +41,7 @@ if (isset($_FILES['picture'])) {
 
         #Put picture info to DB
         $stmt = $connection->prepare("INSERT INTO pictures (PhotoID, FileName, PictureName, Description, Author) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param('sssss', $ID, $filename, $_POST["pictureName"], $_POST["description"], $_POST["author"]);
+        $stmt->bind_param('sssss', $ID, $filename, $_POST["pictureName"], $_POST["description"], $_SESSION['username']);
         $stmt->execute();
 
         #Put tags and picture relation info to db
@@ -51,12 +51,12 @@ if (isset($_FILES['picture'])) {
             $getTagID->execute();
             $getTagID->bind_result($tag_id);
             $getTagID->fetch();
-            $getTagID -> close();
+            $getTagID->close();
 
             $putRelation = $connection->prepare("INSERT INTO picTags (PhotoID, TagID) VALUES (?, ?)");
             $putRelation->bind_param('si', $ID,  $tag_id);
             $putRelation->execute();
-            $putRelation -> close();
+            $putRelation->close();
         }
     }
     header('Location: ' . "https://pics.nasiadka.pl/");
@@ -75,10 +75,6 @@ Upload Photos
     <div>
         <label for="description">Description:</label>
         <textarea name="description" id="description" rows="4" required></textarea>
-    </div>
-    <div>
-        <label for="author">Author:</label>
-        <input type="text" name="author" id="author" required>
     </div>
     <div>
         <label for="tags">Tags (comma-separated):</label>
